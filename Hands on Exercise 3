@@ -1,0 +1,34 @@
+# AMMA Hands on Exercise 3
+
+# Create columns of the dataframe - ID, Income, Gender 
+
+# ID - for 1000 rows between 1000 and 9999
+
+ID<-sample(1000:9999,1000,replace = TRUE)
+View(ID)
+class(ID)
+
+# Income for 1000 rows 
+
+Income <- rnorm(1000, mean = 250000, sd = 75000)
+
+# Gender for 1000 rows
+
+Gender=c(rep("F",1000))
+
+i=sample(1:1000,1000,replace=FALSE)
+
+for(q in 1:1000)
+  {
+  if(Gender[i[q]] == "F" &&  q <= 400)
+    
+  {}
+  else
+    Gender[i[q]] = c("M")
+}
+
+# Combine all three to form a dataframe called "CUSTS" - 
+Custs <-data.frame(ID,Income,Gender)
+
+View(Custs)
+str(Custs)
