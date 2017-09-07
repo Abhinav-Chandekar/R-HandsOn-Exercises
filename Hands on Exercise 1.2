@@ -1,0 +1,45 @@
+#AMMA Hands on exercises
+
+#Exercise 1 - Problem 2
+install.packages("datasets.load")
+women #To see the existing elements of women dataset
+class(women) #To check if women is a data.frame
+
+mean.height<-mean(women$height) 
+mean.weight<- mean(women$weight)
+#To calculate mean height and weight and store in a variables
+
+mean.height
+mean.weight
+
+#Method 1 - Logic Condition of row
+
+df1<- women[women$height>mean.height&women$weight<mean.weight,]
+#Applies condition on rows of women and creates a data frame df1 with rows that satify the condition
+
+df1
+View(df1) #To view the elements that satisfy the condition
+#In this case 0 rows satisfy the above condition of height>mean.height&weight<mean.weight
+
+#Method 2 - Using Subset Function 
+
+df2 <- subset(women,height>mean.height&weight<mean.weight)
+#Uses function 'subset' to apply condition 
+df2
+View(df2)
+class(df2)
+
+#Method 3 - Using a for loop to apply condition to get the number directly (no data frame)
+x=0
+for(q in 1:15)
+{
+  if(women[q,1]>mean.height&women[q,2]<mean.weight)
+  {
+    x=x+1
+  }
+  else(0)
+}
+print(x)
+#x is the number of cases for which the condition holds true - 0 in this case
+
+
