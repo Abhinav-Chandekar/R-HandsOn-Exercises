@@ -1,0 +1,7 @@
+#Download file from webpage - https://data.oecd.org/healthstat/infant-mortality-rates.htm
+#Read csv file from webpage
+
+csv_file <- read.csv(file="C:\\Users\\Abhinav-PC\\Documents\\Amma 2017\\Data\\DP_LIVE_08072017001946470.csv")
+
+#Remove last variable
+csv_file_final <- head(csv_file,-1)
