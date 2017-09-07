@@ -1,0 +1,29 @@
+#AMMA Hands on Exercises
+#Exercise 1c -
+
+install.packages("xml2")
+install.packages("rvest")
+
+library("xml2")
+library("rvest")
+
+?read_html
+
+table<-read_html("http://www.worldatlas.com/articles/the-biggest-cities-in-india.html")
+# To read the entire html page
+html_nodes(table,"table")#To read all the tables on that page
+
+??html_table
+
+final_table<-html_table(table, fill=TRUE)
+# To read the specific data table and store it as an object
+final_table
+class(final_table)
+final_table<-as.data.frame(final_table)
+#To convert the object from a list to a data.frame
+
+final_table
+
+class(final_table)
+
+View(final_table)
