@@ -1,0 +1,30 @@
+# Exercise 5
+
+#Step 1 - Get the data and combine them
+
+install.packages("gdata")
+
+library("gdata")
+
+getwd()
+setwd("C:\\Users\\abhinav\\Desktop\\Term 4\\AMMA\\Data\\data_2017\\data_2017")
+employees = read.csv("Emp.csv")
+dept = read.csv("Dept.csv")
+
+final.df = merge(employees, dept)
+
+#Step 2 - Finding average salary by location
+
+avg_sal_loc = aggregate(df$SAL, by = list(df$LOC), data = df, mean)
+View(avg_sal_loc)
+
+#Step 3 - Finding the manager with the most reportees
+
+mgr = subset(df, select = c(3, 5))
+View(mgr)
+
+# Step 4 - Convert into factors to find frequency of each level
+mgr$MGR <- as.factor(mgr$MGR)
+rp = plyr::count(mgr, 'MGR')
+View(rp)
+print(rp[which.max(rp[,2]),])
