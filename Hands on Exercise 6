@@ -1,0 +1,27 @@
+# AMMA Hands on Exercise - 
+# Step 1 - Install packages and import data 
+
+library("xml2")
+library("rvest")
+link = "http://stats.espncricinfo.com/ci/content/records/284248.html"
+file=read_html(link)
+
+df=html_nodes(file,"table")
+
+df_table<-html_table(df[1],fill=TRUE)
+View(df_table)
+df.final <- as.data.frame(df_table)
+
+View(df.final)
+
+# Step 2 - Plot top 5 Runs scorers
+
+Five<- c(df.final$Player[1], df.final$Player[2], df.final$Player[3], df.final$Player[4], df.final$Player[5])
+
+TopFive.df <- NULL
+TopFive.df$Runs<- df.final$Runs[1:5]
+TopFive.df$Year<- df.final$Year[1:5]
+
+plot(TopFive.df$Year, TopFive.df$Runs)
+
+#End
