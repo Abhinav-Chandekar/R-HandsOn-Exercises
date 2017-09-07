@@ -1,0 +1,26 @@
+# AMMA Hands on Exercises 2.2
+
+# Read 2 table from html page https://en.wikipedia.org/wiki/India–Pakistan_cricket_rivalry 
+
+library("xml2")
+library("rvest")
+getwd()
+setwd("C:\\Users\\abhinav\\Desktop\\Term 4\\AMMA")
+input.df<-read.csv("DP_LIVE_02072017055613917.csv",header=T)
+input.df<-input.df[,-8]
+View(input.df)
+
+# Find the number of ODI Matches won by India 
+
+cricket<-read_html("https://en.wikipedia.org/wiki/India%E2%80%93Pakistan_cricket_rivalry")
+cricket<- html_nodes(cricket,"table")
+cricket_final<- html_table(cricket[2],fill=TRUE)
+View(cricket_final)
+
+cricket_table <- as.data.frame(cricket_final)
+
+View(cricket_table)
+
+NumberODI = cricket_table$ODI[2]
+
+NumberODI
