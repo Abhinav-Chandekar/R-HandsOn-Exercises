@@ -1,4 +1,8 @@
 #Download file from webpage - https://data.oecd.org/healthstat/infant-mortality-rates.htm
+library("xml2")
+library("rvest")
+getwd()
+setwd("C:\\Users\\Abhinav-PC\\Documents\\Amma 2017\\Data")
 #Read csv file from webpage
 
 csv_file <- read.csv(file="C:\\Users\\Abhinav-PC\\Documents\\Amma 2017\\Data\\DP_LIVE_08072017001946470.csv")
